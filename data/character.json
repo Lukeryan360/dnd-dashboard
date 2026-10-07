@@ -1,0 +1,65 @@
+{
+  "character": {
+    "name": "Gribble the Goblin",
+    "level": 7,
+
+    "class": "Artificer",
+    "subclass": "Battle Smith",
+    "species": "Boggart",
+
+    "feats": [
+      "Symbiotic Being",
+      "Fey Touched"
+    ],
+
+    "spells": {
+      "cantrips": [
+        "Eldritch Blast",
+        "Mending",
+        "Prestidigitation",
+        "Mage Hand"
+      ],
+      "level_1": [
+        "Tasha's Hideous Laughter",
+        "Heroism",
+        "Shield",
+        "Identify",
+        "Cure Wounds",
+        "Grease",
+        "Longstrider"
+      ],
+      "level_2": [
+        "Misty Step",
+        "Shining Smite",
+        "Warding Bond",
+        "Homunculus Servant",
+        "Invisibility",
+        "Enhance Ability"
+      ],
+      "level_3": [],
+      "level_4": [],
+      "level_5": [],
+      "level_6": [],
+      "level_7": [],
+      "level_8": [],
+      "level_9": []
+    },
+
+    "magic_items": [
+      "Amulet of Health",
+      {
+        "name": "All-Purpose Tool",
+        "url": "https://dnd5e.wikidot.com/wondrous-items:all-purpose-tool"
+      },
+      {
+        "name": "Armor, +1",
+        "url": "https://dnd2024.wikidot.com/magic-item:armor-1-2-or-3"
+      },
+      "Alchemy Jug",
+      "Dazzling Weapon",
+      "Wand of Magic Missiles",
+      "Pipes of Haunting",
+      "Spell-Refueling Ring"
+    ]
+  }
+}

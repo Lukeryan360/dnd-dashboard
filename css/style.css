@@ -1,0 +1,397 @@
+/* ============================================================
+   style.css
+   D&D Character Dashboard
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   Variables
+   ------------------------------------------------------------ */
+
+:root {
+    --background: #f3f0e9;
+    --surface: #ffffff;
+    --surface-hover: #f8f6f1;
+
+    --text: #24211e;
+    --text-muted: #716b63;
+
+    --accent: #8b1e2d;
+    --accent-dark: #651621;
+
+    --border: #d8d2c7;
+    --border-dark: #bbb3a6;
+
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+    --radius: 8px;
+}
+
+
+/* ------------------------------------------------------------
+   Global
+   ------------------------------------------------------------ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+
+    font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Arial,
+            sans-serif;
+}
+
+
+/* ------------------------------------------------------------
+   Main Application
+   ------------------------------------------------------------ */
+
+#app {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ------------------------------------------------------------
+   Dashboard
+   ------------------------------------------------------------ */
+
+#dashboard {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+    padding: 48px 60px;
+
+    transition:
+            width 0.3s ease,
+            padding 0.3s ease;
+}
+
+
+/* ------------------------------------------------------------
+   Character Header
+   ------------------------------------------------------------ */
+
+#character-header {
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+
+    border-bottom: 2px solid var(--accent);
+}
+
+#character-name {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.6rem;
+    line-height: 1.1;
+
+    color: var(--text);
+}
+
+#character-summary {
+    margin: 8px 0 0;
+
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+
+/* ------------------------------------------------------------
+   Dashboard Sections
+   ------------------------------------------------------------ */
+
+.dashboard-section {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    padding: 22px 24px;
+    margin-bottom: 20px;
+
+    box-shadow: var(--shadow);
+}
+
+.dashboard-section h2 {
+    margin: 0 0 16px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+
+    color: var(--accent);
+
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+
+/* ------------------------------------------------------------
+   Dashboard Links
+   ------------------------------------------------------------ */
+
+#character-links,
+#magic-item-links,
+#reference-links {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.dashboard-link {
+    display: inline-block;
+
+    padding: 7px 11px;
+
+    color: var(--text);
+    background: var(--surface-hover);
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-size: 0.92rem;
+
+    transition:
+            background 0.15s ease,
+            color 0.15s ease,
+            border-color 0.15s ease,
+            transform 0.15s ease;
+}
+
+.dashboard-link:hover {
+    color: white;
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    transform: translateY(-1px);
+}
+
+.dashboard-link:active {
+    transform: translateY(0);
+}
+
+
+/* ------------------------------------------------------------
+   Spell Section
+   ------------------------------------------------------------ */
+
+#spell-links {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 20px;
+}
+
+.spell-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.spell-group h3 {
+    margin: 0 0 4px;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.spell-group .dashboard-link {
+    width: 100%;
+}
+
+
+/* ------------------------------------------------------------
+   Viewer
+   ------------------------------------------------------------ */
+
+#viewer {
+    display: none;
+
+    position: relative;
+
+    width: 67%;
+    min-height: 100vh;
+
+    background: white;
+
+    border-left: 1px solid var(--border-dark);
+}
+
+
+/* Wikidot iframe */
+
+#wiki-frame {
+    width: 100%;
+    height: 100vh;
+
+    border: none;
+}
+
+
+/* Close button */
+
+#viewer-close {
+    position: absolute;
+
+    top: 14px;
+    right: 18px;
+
+    z-index: 10;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--text);
+    color: white;
+
+    font-size: 1.4rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow: var(--shadow);
+
+    transition:
+            background 0.15s ease,
+            transform 0.15s ease;
+}
+
+#viewer-close:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+
+/* ------------------------------------------------------------
+   Viewer Open State
+   ------------------------------------------------------------ */
+
+/*
+   Later, ui.js will add the class "viewer-open" to #app.
+
+   Normal:
+       dashboard = 100%
+       viewer    = hidden
+
+   Viewer open:
+       dashboard = 33%
+       viewer    = 67%
+*/
+
+#app.viewer-open #dashboard {
+    width: 33%;
+    min-width: 300px;
+
+    padding: 30px 24px;
+
+    margin: 0;
+}
+
+#app.viewer-open #viewer {
+    display: block;
+}
+
+
+/* ------------------------------------------------------------
+   Compact Dashboard
+   ------------------------------------------------------------ */
+
+#app.viewer-open #character-name {
+    font-size: 1.8rem;
+}
+
+#app.viewer-open #character-header {
+    margin-bottom: 20px;
+}
+
+#app.viewer-open .dashboard-section {
+    padding: 16px;
+    margin-bottom: 14px;
+
+    box-shadow: none;
+}
+
+#app.viewer-open .dashboard-section h2 {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+
+/* Links become slightly smaller */
+
+#app.viewer-open .dashboard-link {
+    padding: 5px 8px;
+    font-size: 0.82rem;
+}
+
+
+/* Spell levels become one column */
+
+#app.viewer-open #spell-links {
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+
+@media (max-width: 850px) {
+
+    #dashboard {
+        padding: 30px 24px;
+    }
+
+    #character-name {
+        font-size: 2rem;
+    }
+
+    #spell-links {
+        grid-template-columns: 1fr;
+    }
+
+
+    /*
+       On small screens, don't attempt the 1/3 + 2/3 layout.
+       Let the viewer take over the screen.
+    */
+
+    #app.viewer-open #dashboard {
+        display: none;
+    }
+
+    #app.viewer-open #viewer {
+        width: 100%;
+    }
+}
