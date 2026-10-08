@@ -62,35 +62,50 @@
         "Spell-Refueling Ring"
       ]
     },
+
     {
-      "name": "Eldrin Swiftstep",
-      "level": 5,
-      "class": "Ranger",
-      "subclass": "Gloom Stalker",
-      "species": "Elf",
+      "name": "Kardrum Stormwalker",
+      "level": 7,
+      "class": "Cleric",
+      "subclass": {
+        "name": "Tempest Domain",
+        "url": "https://dnd5e.wikidot.com/cleric:tempest"
+      },
+      "species": "Goliath",
       "theme": {
-        "accent": "#2e7d32"
+        "accent": "#2e5c7d"
       },
       "feats": [
-        "Sharpshooter"
+        "Tough"
       ],
       "spells": {
-        "cantrips": [],
+        "cantrips": [
+          "Guidance",
+          "Thaumaturgy"
+        ],
         "level_1": [
-          "Hunter's Mark",
-          "Goodberry"
+          "Fog Cloud",
+          "Thunderwave",
+          "Cure Wounds"
         ],
         "level_2": [
-          "Pass without Trace"
+          "Enhance Ability"
+        ],
+        "level_3": [
+          "Gust of Wind",
+          "Shatter"
         ]
       },
       "magic_items": [
-        "Longbow, +1",
-        "Cloak of Elvenkind"
+        {
+          "name": "Armor, +1",
+          "url": "https://dnd2024.wikidot.com/magic-item:armor-1-2-or-3"
+        }
       ]
     },
+
     {
-      "name": "No Theme Character",
+      "name": "Mister Placeholder",
       "level": 1,
       "class": "Fighter",
       "species": "Human"
