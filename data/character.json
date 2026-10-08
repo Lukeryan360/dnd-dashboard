@@ -1,65 +1,99 @@
 {
-  "character": {
-    "name": "Gribble the Goblin",
-    "level": 7,
-
-    "class": "Artificer",
-    "subclass": "Battle Smith",
-    "species": "Boggart",
-
-    "feats": [
-      "Symbiotic Being",
-      "Fey Touched"
-    ],
-
-    "spells": {
-      "cantrips": [
-        "Eldritch Blast",
-        "Mending",
-        "Prestidigitation",
-        "Mage Hand"
+  "characters": [
+    {
+      "name": "Gribble the Goblin",
+      "level": 7,
+      "class": "Artificer",
+      "subclass": "Battle Smith",
+      "species": "Boggart",
+      "theme": {
+        "accent": "#4f2e7d"
+      },
+      "feats": [
+        "Symbiotic Being",
+        "Fey Touched"
       ],
-      "level_1": [
-        "Tasha's Hideous Laughter",
-        "Heroism",
-        "Shield",
-        "Identify",
-        "Cure Wounds",
-        "Grease",
-        "Longstrider"
-      ],
-      "level_2": [
-        "Misty Step",
-        "Shining Smite",
-        "Warding Bond",
-        "Homunculus Servant",
-        "Invisibility",
-        "Enhance Ability"
-      ],
-      "level_3": [],
-      "level_4": [],
-      "level_5": [],
-      "level_6": [],
-      "level_7": [],
-      "level_8": [],
-      "level_9": []
+      "spells": {
+        "cantrips": [
+          "Eldritch Blast",
+          "Mending",
+          "Prestidigitation",
+          "Mage Hand"
+        ],
+        "level_1": [
+          "Tasha's Hideous Laughter",
+          "Heroism",
+          "Shield",
+          "Identify",
+          "Cure Wounds",
+          "Grease",
+          "Longstrider"
+        ],
+        "level_2": [
+          "Misty Step",
+          "Shining Smite",
+          "Warding Bond",
+          "Homunculus Servant",
+          "Invisibility",
+          "Enhance Ability"
+        ],
+        "level_3": [],
+        "level_4": [],
+        "level_5": [],
+        "level_6": [],
+        "level_7": [],
+        "level_8": [],
+        "level_9": []
+      },
+      "magic_items": [
+        "Amulet of Health",
+        {
+          "name": "All-Purpose Tool",
+          "url": "https://dnd5e.wikidot.com/wondrous-items:all-purpose-tool"
+        },
+        {
+          "name": "Armor, +1",
+          "url": "https://dnd2024.wikidot.com/magic-item:armor-1-2-or-3"
+        },
+        "Alchemy Jug",
+        "Dazzling Weapon",
+        "Wand of Magic Missiles",
+        "Pipes of Haunting",
+        "Spell-Refueling Ring"
+      ]
     },
-
-    "magic_items": [
-      "Amulet of Health",
-      {
-        "name": "All-Purpose Tool",
-        "url": "https://dnd5e.wikidot.com/wondrous-items:all-purpose-tool"
+    {
+      "name": "Eldrin Swiftstep",
+      "level": 5,
+      "class": "Ranger",
+      "subclass": "Gloom Stalker",
+      "species": "Elf",
+      "theme": {
+        "accent": "#2e7d32"
       },
-      {
-        "name": "Armor, +1",
-        "url": "https://dnd2024.wikidot.com/magic-item:armor-1-2-or-3"
+      "feats": [
+        "Sharpshooter"
+      ],
+      "spells": {
+        "cantrips": [],
+        "level_1": [
+          "Hunter's Mark",
+          "Goodberry"
+        ],
+        "level_2": [
+          "Pass without Trace"
+        ]
       },
-      "Alchemy Jug",
-      "Dazzling Weapon",
-      "Wand of Magic Missiles",
-      "Pipes of Haunting",
-      "Spell-Refueling Ring"
-    ]
-  }
+      "magic_items": [
+        "Longbow, +1",
+        "Cloak of Elvenkind"
+      ]
+    },
+    {
+      "name": "No Theme Character",
+      "level": 1,
+      "class": "Fighter",
+      "species": "Human"
+    }
+  ]
 }

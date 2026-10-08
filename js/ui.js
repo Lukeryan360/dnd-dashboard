@@ -130,6 +130,11 @@ function renderSpells(character) {
 
     container.innerHTML = "";
 
+    if (!character.spells || Object.keys(character.spells).length === 0) {
+        container.innerHTML = "<p class='muted'>No spells prepared.</p>";
+        return;
+    }
+
     for (const [level, spells] of Object.entries(character.spells)) {
 
         // Don't show empty spell levels
@@ -185,7 +190,41 @@ function renderReferences() {
     );
 }
 
+// ------------------------------------------------------------
+// Theme Application
+// ------------------------------------------------------------
+
+function applyCharacterTheme(character) {
+    const accent = character.theme?.accent || "#8b1e2d";
+    document.documentElement.style.setProperty("--accent", accent);
+}
+
+
+// ------------------------------------------------------------
+// Character Selector
+// ------------------------------------------------------------
+
+function populateCharacterSelector(characters, activeName) {
+    const selector = document.getElementById("character-select");
+
+    selector.innerHTML = "";
+
+    for (const character of characters) {
+        const option = document.createElement("option");
+
+        option.value = character.name;
+        option.textContent = character.name;
+
+        if (character.name === activeName) {
+            option.selected = true;
+        }
+
+        selector.appendChild(option);
+    }
+}
+
 function renderDashboard(character) {
+    applyCharacterTheme(character);
     renderCharacter(character);
     renderSpells(character);
     renderMagicItems(character);

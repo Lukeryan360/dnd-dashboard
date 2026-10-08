@@ -17,7 +17,7 @@
     --text-muted: #716b63;
 
     --accent: #8b1e2d;
-    --accent-dark: #651621;
+    --accent-dark: color-mix(in srgb, var(--accent), black 25%);
 
     --border: #d8d2c7;
     --border-dark: #bbb3a6;
@@ -89,6 +89,11 @@ body {
    ------------------------------------------------------------ */
 
 #character-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
     margin-bottom: 32px;
     padding-bottom: 20px;
 
@@ -112,6 +117,61 @@ body {
     font-size: 1rem;
 }
 
+/* ------------------------------------------------------------
+   Character Selector
+   ------------------------------------------------------------ */
+
+#character-identity {
+    flex: 1;
+    min-width: 0;
+}
+
+#character-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    width: 220px;
+    flex-shrink: 0;
+}
+
+#character-selector label {
+    color: var(--text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+#character-select {
+    width: 100%;
+    padding: 10px 12px;
+
+    font: inherit;
+    font-size: 0.92rem;
+
+    color: var(--text);
+    background: var(--surface);
+
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius);
+
+    cursor: pointer;
+
+    transition:
+            border-color 0.15s ease,
+            box-shadow 0.15s ease;
+}
+
+#character-select:hover {
+    border-color: var(--accent);
+}
+
+#character-select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
 
 /* ------------------------------------------------------------
    Dashboard Sections
@@ -318,6 +378,14 @@ body {
 
     #character-name {
         font-size: 2rem;
+    }
+
+    #character-header {
+        flex-wrap: wrap;
+    }
+
+    #character-selector {
+        width: 100%;
     }
 
     #character-links {

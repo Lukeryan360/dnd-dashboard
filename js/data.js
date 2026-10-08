@@ -6,10 +6,10 @@
 const CHARACTER_DATA_PATH = "data/character.json";
 
 // ------------------------------------------------------------
-// Load Character
+// Load Characters
 // ------------------------------------------------------------
 
-async function loadCharacter() {
+async function loadCharacters() {
     try {
         const response = await fetch(CHARACTER_DATA_PATH);
 
@@ -21,11 +21,15 @@ async function loadCharacter() {
 
         const data = await response.json();
 
-        return normalizeCharacter(data.character);
+        if (!Array.isArray(data.characters)) {
+            throw new Error("Invalid character data format: expected an array.");
+        }
+
+        return data.characters.map(normalizeCharacter);
 
     } catch (error) {
-        console.error("Error loading character:", error);
-        return null;
+        console.error("Error loading characters:", error);
+        return [];
     }
 }
 
@@ -93,6 +97,27 @@ function normalizeList(items, type, parent = null) {
 
 
 // ------------------------------------------------------------
+// Normalize Theme
+// ------------------------------------------------------------
+
+function normalizeTheme(theme) {
+    const DEFAULT_ACCENT = "#8b1e2d";
+
+    if (!theme || typeof theme.accent !== "string") {
+        return { accent: DEFAULT_ACCENT };
+    }
+
+    // Simple hex validation (#RRGGBB)
+    const hexRegex = /^#[0-9a-fA-F]{6}$/;
+    const isValid = hexRegex.test(theme.accent);
+
+    return {
+        accent: isValid ? theme.accent : DEFAULT_ACCENT
+    };
+}
+
+
+// ------------------------------------------------------------
 // Normalize Character
 // ------------------------------------------------------------
 
@@ -124,7 +149,8 @@ function normalizeCharacter(raw) {
         magic_items: normalizeList(
             raw.magic_items,
             "magic_item"
-        )
+        ),
+        theme: normalizeTheme(raw.theme)
     };
 
 

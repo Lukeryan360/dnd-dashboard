@@ -18,8 +18,23 @@
     <section id="dashboard">
 
         <header id="character-header">
-            <h1 id="character-name">Character Name</h1>
-            <p id="character-summary"></p>
+            <!-- Main header -->
+            <div id="character-identity">
+                <h1 id="character-name">Character Name</h1>
+                <p id="character-summary"></p>
+            </div>
+
+            <!-- Character Selector Dropdown -->
+            <div id="character-selector">
+                <label for="character-select">Active Character</label>
+
+                <select id="character-select" name="character">
+                    <option value="default" selected>
+                        Current Character
+                    </option>
+                </select>
+            </div>
+
         </header>
 
         <!-- Character -->
@@ -74,7 +89,7 @@
         </section>
 
         <footer id="dashboard-footer">
-            <span>D&D Dashboard · <span id="footer-version"></span></span>
+            <span id="footer-version"></span>
             <span>Created by Luke Ryan</span>
             <span>
         References:
