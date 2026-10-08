@@ -3,7 +3,7 @@
   "projectName": "D&D Dashboard",
   "version": "1.1.2",
   "author": "Luke Ryan",
-  "description": "A simple dashboard for D&D 5e 2024 characters. Buttons link to the relevant Wikidot page.",
+  "description": "A simple dashboard for D&D 5e 2024 characters. Buttons link to the relevant Wikidot page.\n Currently only supports monoclass characters.",
   "main": "index.html",
   "private": false
 }
