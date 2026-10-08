@@ -1,6 +1,8 @@
 {
   "name": "dnd-dashboard",
-  "version": "1.0.0",
+  "projectName": "D&D Dashboard",
+  "version": "1.1.1",
+  "author": "Luke Ryan",
   "description": "",
   "main": "index.html",
   "private": true

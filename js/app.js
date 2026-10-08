@@ -1,8 +1,21 @@
 async function init() {
 
-    // Getting config
-    document.getElementById("footer-version").textContent =
-        `${CONFIG.projectName} · v${CONFIG.version}`;
+    // Getting project metadata from package.json
+    try {
+        const response = await fetch("package.json");
+        if (response.ok) {
+            const pkg = await response.json();
+            
+            // Get project name and version from package.json
+            const projectName = pkg.projectName || pkg.name;
+            const version = pkg.version; 
+
+            document.getElementById("footer-version").textContent =
+                `${projectName} · v${version}`;
+        }
+    } catch (error) {
+        console.error("Could not fetch project metadata:", error);
+    }
 
     // Getting character data
     const characters = await loadCharacters();
