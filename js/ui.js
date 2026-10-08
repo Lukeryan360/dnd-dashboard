@@ -74,33 +74,53 @@ function renderCharacter(character) {
     document.getElementById("character-name").textContent =
         character.name;
 
+    const subclassName = character.subclass
+        ? ` (${character.subclass.name})`
+        : "";
+
     document.getElementById("character-summary").textContent =
-        `Level ${character.level} ${character.class.name}`;
+        `Level ${character.level} ${character.class.name}${subclassName}`;
+
+    // Species
+    const speciesContainer =
+        document.getElementById("character-species");
+
+    speciesContainer.innerHTML = "";
+
+    if (character.species) {
+        speciesContainer.appendChild(
+            createLink(character.species)
+        );
+    }
 
 
-    // Character links
-    const container =
-        document.getElementById("character-links");
+    // Class & Subclass
+    const classContainer =
+        document.getElementById("character-classes");
 
-    container.innerHTML = "";
+    classContainer.innerHTML = "";
 
-    const mainInfo = [
-        character.class,
-        character.subclass,
-        character.species
-    ];
+    if (character.class) {
+        classContainer.appendChild(
+            createLink(character.class)
+        );
+    }
 
-    for (const item of mainInfo) {
-        if (item) {
-            container.appendChild(createLink(item));
-        }
+    if (character.subclass) {
+        const subclassLink = createLink(character.subclass);
+
+        subclassLink.classList.add("subclass");
+
+        classContainer.appendChild(subclassLink);
     }
 
 
     // Feats
-    for (const feat of character.feats) {
-        container.appendChild(createLink(feat));
-    }
+    const featsContainer =
+        document.getElementById("character-feats");
+
+    renderList(character.feats, featsContainer);
+
 }
 
 function renderSpells(character) {
@@ -171,4 +191,3 @@ function renderDashboard(character) {
     renderMagicItems(character);
     renderReferences();
 }
-

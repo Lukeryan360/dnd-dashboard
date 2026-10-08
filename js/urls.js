@@ -31,7 +31,7 @@ function slugify(name) {
     return name
         .trim()
         .toLowerCase()
-        .replace(/['’]/g, "")       // Remove apostrophes
+        .replace(/['’]/g, "-")      // Replace apostrophes with -
         .replace(/&/g, "and")       // Replace & with "and"
         .replace(/[^a-z0-9]+/g, "-") // Replace other characters with -
         .replace(/^-+|-+$/g, "");   // Remove leading/trailing -
