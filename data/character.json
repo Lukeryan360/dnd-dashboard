@@ -3,13 +3,13 @@
     {
       "name": "Gribble the Goblin",
       "group": "Silver Patrol",
+      "theme": {
+        "accent": "#4f2e7d"
+      },
       "level": 7,
       "class": "Artificer",
       "subclass": "Battle Smith",
       "species": "Boggart",
-      "theme": {
-        "accent": "#4f2e7d"
-      },
       "feats": [
         "Symbiotic Being",
         "Fey Touched"
@@ -67,6 +67,9 @@
     {
       "name": "Kardrum Stormwalker",
       "group": "Silver Patrol",
+      "theme": {
+        "accent": "#2e5c7d"
+      },
       "level": 7,
       "class": "Cleric",
       "subclass": {
@@ -74,9 +77,6 @@
         "url": "https://dnd5e.wikidot.com/cleric:tempest"
       },
       "species": "Goliath",
-      "theme": {
-        "accent": "#2e5c7d"
-      },
       "feats": [
         "Tough"
       ],
@@ -107,11 +107,37 @@
     },
 
     {
+      "name": "Verona Silverfield",
+      "group": "Silver Patrol",
+      "theme": {
+        "accent": "#7d2e70"
+      },
+      "level": 7,
+      "class": "Sorcerer",
+      "subclass": "Wild Magic",
+      "species": "Elf",
+      "spells": {
+        "cantrips": [
+          "Fire Bolt"
+        ],
+        "level_1": [
+          "Mage Armor"
+        ]
+      },
+      "magic_items": [
+        "Dagger of Venom"
+      ]
+    },
+
+    {
       "name": "Mister Placeholder",
       "group": "Other",
       "level": 1,
       "class": "Fighter",
-      "species": "Human"
+      "species": "Human",
+      "magic_items": [
+        "Vorpal Sword"
+      ]
     }
   ]
 }
