@@ -209,17 +209,36 @@ function populateCharacterSelector(characters, activeName) {
 
     selector.innerHTML = "";
 
+    const groups = {};
+
     for (const character of characters) {
-        const option = document.createElement("option");
+        const groupName = character.group || "Ungrouped";
 
-        option.value = character.name;
-        option.textContent = character.name;
-
-        if (character.name === activeName) {
-            option.selected = true;
+        if (!groups[groupName]) {
+            groups[groupName] = [];
         }
 
-        selector.appendChild(option);
+        groups[groupName].push(character);
+    }
+
+    for (const [groupName, groupCharacters] of Object.entries(groups)) {
+        const optgroup = document.createElement("optgroup");
+        optgroup.label = groupName;
+
+        for (const character of groupCharacters) {
+            const option = document.createElement("option");
+
+            option.value = character.name;
+            option.textContent = character.name;
+
+            if (character.name === activeName) {
+                option.selected = true;
+            }
+
+            optgroup.appendChild(option);
+        }
+
+        selector.appendChild(optgroup);
     }
 }
 

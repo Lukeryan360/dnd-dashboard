@@ -2,6 +2,7 @@
   "characters": [
     {
       "name": "Gribble the Goblin",
+      "group": "Silver Patrol",
       "level": 7,
       "class": "Artificer",
       "subclass": "Battle Smith",
@@ -65,6 +66,7 @@
 
     {
       "name": "Kardrum Stormwalker",
+      "group": "Silver Patrol",
       "level": 7,
       "class": "Cleric",
       "subclass": {
@@ -106,6 +108,7 @@
 
     {
       "name": "Mister Placeholder",
+      "group": "Other",
       "level": 1,
       "class": "Fighter",
       "species": "Human"

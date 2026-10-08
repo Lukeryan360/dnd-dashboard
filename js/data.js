@@ -125,6 +125,7 @@ function normalizeCharacter(raw) {
 
     const character = {
         name: raw.name ?? "",
+        group: raw.group ?? null,
         level: raw.level ?? null,
 
         class: normalizeItem(raw.class, "class"),

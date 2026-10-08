@@ -1,9 +1,9 @@
 {
   "name": "dnd-dashboard",
   "projectName": "D&D Dashboard",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "Luke Ryan",
-  "description": "",
+  "description": "A simple dashboard for D&D 5e 2024 characters. Buttons link to the relevant Wikidot page.",
   "main": "index.html",
-  "private": true
+  "private": false
 }
