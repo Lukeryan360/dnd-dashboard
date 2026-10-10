@@ -28,7 +28,11 @@
           "Identify",
           "Cure Wounds",
           "Grease",
-          "Longstrider"
+          "Longstrider",
+          {
+            "name": "Absorb Elements",
+            "url": "https://dnd5e.wikidot.com/spell:absorb-elements"
+          }
         ],
         "level_2": [
           "Misty Step",

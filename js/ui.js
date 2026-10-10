@@ -23,6 +23,10 @@ const REFERENCE_PAGES = [
     {
         name: "Tools",
         url: "https://dnd2024.wikidot.com/equipment:tool"
+    },
+    {
+        name: "Circle Magic",
+        url: "https://pages.roll20.net/dnd/circle-magic-guide"
     }
 ];
 
