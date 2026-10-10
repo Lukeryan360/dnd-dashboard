@@ -82,27 +82,54 @@
       ],
       "spells": {
         "cantrips": [
+          "Shocking Grasp",
           "Guidance",
-          "Thaumaturgy"
+          "Mending",
+          "Light"
         ],
         "level_1": [
           "Fog Cloud",
           "Thunderwave",
-          "Cure Wounds"
+          "Cure Wounds",
+          "Bless",
+          "Healing Word"
         ],
         "level_2": [
-          "Enhance Ability"
+          "Gust of Wind",
+          "Shatter",
+          "Silence",
+          "Hold Person"
         ],
         "level_3": [
-          "Gust of Wind",
-          "Shatter"
+          "Lightning Bolt",
+          "Sleet Storm",
+          "Spirit Guardians",
+          "Revivify",
+          "Sending",
+          "Tongues",
+          "Dispel Magic"
+        ],
+        "level_4": [
+          "Control Water",
+          "Ice Storm",
+          "Locate Creature"
         ]
       },
       "magic_items": [
         {
-          "name": "Armor, +1",
-          "url": "https://dnd2024.wikidot.com/magic-item:armor-1-2-or-3"
-        }
+          "name": "Shield, +1",
+          "url": "https://dnd2024.wikidot.com/magic-item:shield-1-2-or-3"
+        },
+        {
+          "name": "Quarterstaff, +2",
+          "url": "https://dnd2024.wikidot.com/magic-item:weapon-1-2-or-3"
+        },
+        {
+          "name": "Amulet of the Devout",
+          "url": "https://dnd5e.wikidot.com/wondrous-items:amulet-of-the-devout"
+        },
+        "Robe of Useful Items",
+        "Bag of Beans"
       ]
     },
 
