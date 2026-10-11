@@ -1,0 +1,69 @@
+{
+  "id": "kardrum",
+  "name": "Kardrum Stormwalker",
+  "group": "Silver Patrol",
+  "theme": {
+    "accent": "#2e5c7d"
+  },
+  "level": 7,
+  "class": "Cleric",
+  "subclass": {
+    "name": "Tempest Domain",
+    "url": "https://dnd5e.wikidot.com/cleric:tempest"
+  },
+  "species": "Goliath",
+  "feats": [
+    "Tough"
+  ],
+  "spells": {
+    "cantrips": [
+      "Shocking Grasp",
+      "Guidance",
+      "Mending",
+      "Light"
+    ],
+    "level_1": [
+      "Fog Cloud",
+      "Thunderwave",
+      "Cure Wounds",
+      "Bless",
+      "Healing Word"
+    ],
+    "level_2": [
+      "Gust of Wind",
+      "Shatter",
+      "Silence",
+      "Hold Person"
+    ],
+    "level_3": [
+      "Lightning Bolt",
+      "Sleet Storm",
+      "Spirit Guardians",
+      "Revivify",
+      "Sending",
+      "Tongues",
+      "Dispel Magic"
+    ],
+    "level_4": [
+      "Control Water",
+      "Ice Storm",
+      "Locate Creature"
+    ]
+  },
+  "magic_items": [
+    {
+      "name": "Shield, +1",
+      "url": "https://dnd2024.wikidot.com/magic-item:shield-1-2-or-3"
+    },
+    {
+      "name": "Quarterstaff, +2",
+      "url": "https://dnd2024.wikidot.com/magic-item:weapon-1-2-or-3"
+    },
+    {
+      "name": "Amulet of the Devout",
+      "url": "https://dnd5e.wikidot.com/wondrous-items:amulet-of-the-devout"
+    },
+    "Robe of Useful Items",
+    "Bag of Beans"
+  ]
+}

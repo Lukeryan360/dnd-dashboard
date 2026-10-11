@@ -1,0 +1,23 @@
+{
+  "id": "verona",
+  "name": "Verona Silverfield",
+  "group": "Silver Patrol",
+  "theme": {
+    "accent": "#7d2e70"
+  },
+  "level": 7,
+  "class": "Sorcerer",
+  "subclass": "Wild Magic",
+  "species": "Elf",
+  "spells": {
+    "cantrips": [
+      "Fire Bolt"
+    ],
+    "level_1": [
+      "Mage Armor"
+    ]
+  },
+  "magic_items": [
+    "Dagger of Venom"
+  ]
+}

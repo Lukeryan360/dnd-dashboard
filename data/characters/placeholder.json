@@ -1,0 +1,11 @@
+{
+  "id": "placeholder",
+  "name": "Mister Placeholder",
+  "group": "Other",
+  "level": 1,
+  "class": "Fighter",
+  "species": "Human",
+  "magic_items": [
+    "Vorpal Sword"
+  ]
+}

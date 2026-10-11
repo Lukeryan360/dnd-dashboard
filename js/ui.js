@@ -1,3 +1,5 @@
+import { updateFavicon } from "./favicon.js";
+
 // ============================================================
 // ui.js
 // Handles rendering and user interface behavior.
@@ -7,33 +9,26 @@
 // Reference Page Links
 // ------------------------------------------------------------
 
-const REFERENCE_PAGES = [
-    {
-        name: "Adventuring Gear",
-        url: "https://dnd2024.wikidot.com/equipment:adventuring-gear"
-    },
-    {
-        name: "Weapons",
-        url: "https://dnd2024.wikidot.com/equipment:weapon"
-    },
-    {
-        name: "Armor",
-        url: "https://dnd2024.wikidot.com/equipment:armor"
-    },
-    {
-        name: "Tools",
-        url: "https://dnd2024.wikidot.com/equipment:tool"
-    },
-    {
-        name: "Circle Magic",
-        url: "https://pages.roll20.net/dnd/circle-magic-guide"
-    }
-];
+// REFERENCE_PAGES are now loaded from data/refs.json
 
 
 // ============================================================
 // Render Dashboard
 // ============================================================
+
+/**
+ * Displays an error message in the UI.
+ * @param {string} message - The error message to display.
+ */
+export function showError(message) {
+    const banner = document.getElementById("error-banner");
+    const messageEl = document.getElementById("error-message");
+
+    if (banner && messageEl) {
+        messageEl.textContent = message;
+        banner.style.display = "block";
+    }
+}
 
 // ------------------------------------------------------------
 // Create Link
@@ -184,12 +179,12 @@ function renderMagicItems(character) {
 }
 
 // Extra Reference Links
-function renderReferences() {
+function renderReferences(references) {
     const container =
         document.getElementById("reference-links");
 
     renderList(
-        REFERENCE_PAGES,
+        references || [],
         container
     );
 }
@@ -201,6 +196,7 @@ function renderReferences() {
 function applyCharacterTheme(character) {
     const accent = character.theme?.accent || "#8b1e2d";
     document.documentElement.style.setProperty("--accent", accent);
+    updateFavicon(character.theme?.accent);
 }
 
 
@@ -208,7 +204,7 @@ function applyCharacterTheme(character) {
 // Character Selector
 // ------------------------------------------------------------
 
-function populateCharacterSelector(characters, activeName) {
+export function populateCharacterSelector(characters, activeId) {
     const selector = document.getElementById("character-select");
 
     selector.innerHTML = "";
@@ -232,10 +228,10 @@ function populateCharacterSelector(characters, activeName) {
         for (const character of groupCharacters) {
             const option = document.createElement("option");
 
-            option.value = character.name;
+            option.value = character.id;
             option.textContent = character.name;
 
-            if (character.name === activeName) {
+            if (character.id === activeId) {
                 option.selected = true;
             }
 
@@ -246,10 +242,10 @@ function populateCharacterSelector(characters, activeName) {
     }
 }
 
-function renderDashboard(character) {
+export function renderDashboard(character, references) {
     applyCharacterTheme(character);
     renderCharacter(character);
     renderSpells(character);
     renderMagicItems(character);
-    renderReferences();
+    renderReferences(references);
 }

@@ -27,7 +27,7 @@ const URL_PATTERNS = {
 // Slug Generator
 // ------------------------------------------------------------
 
-function slugify(name) {
+export function slugify(name) {
     return name
         .trim()
         .toLowerCase()
@@ -42,7 +42,7 @@ function slugify(name) {
 // URL Generator
 // ------------------------------------------------------------
 
-function generateUrl(name, type, parent = null) {
+export function generateUrl(name, type, parent = null) {
 
     const pattern = URL_PATTERNS[type];
 
