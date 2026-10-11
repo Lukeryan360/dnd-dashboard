@@ -37,11 +37,42 @@
             <div id="character-selector">
                 <label for="character-select">Active Character</label>
 
-                <select id="character-select" name="character">
-                    <option value="default" selected>
-                        Current Character
-                    </option>
-                </select>
+                <div class="character-selector-row">
+                    <select id="character-select" name="character">
+                        <option value="default" selected>
+                            Current Character
+                        </option>
+                    </select>
+
+                    <button
+                        class="icon-button"
+                        id="add-character-button"
+                        type="button"
+                        aria-haspopup="menu"
+                        aria-expanded="false"
+                        title="Add Character">
+                        +
+                    </button>
+                </div>
+
+                <button class="secondary-button" id="export-current-character" type="button">
+                    Export JSON
+                </button>
+
+                <div class="popover-menu" id="add-character-menu" role="menu" hidden>
+                    <button id="create-character-action" type="button" role="menuitem">
+                        Create New Character
+                    </button>
+                    <button id="import-character-action" type="button" role="menuitem">
+                        Import JSON
+                    </button>
+                </div>
+
+                <input
+                    id="character-import-input"
+                    type="file"
+                    accept="application/json,.json"
+                    hidden>
             </div>
 
         </header>

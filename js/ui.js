@@ -73,12 +73,15 @@ function renderCharacter(character) {
     document.getElementById("character-name").textContent =
         character.name;
 
+    const className = character.class?.name || "Adventurer";
+    const levelName = character.level ? `Level ${character.level}` : "Character";
+
     const subclassName = character.subclass
         ? ` (${character.subclass.name})`
         : "";
 
     document.getElementById("character-summary").textContent =
-        `Level ${character.level} ${character.class.name}${subclassName}`;
+        `${levelName} ${className}${subclassName}`;
 
     // Species
     const speciesContainer =
@@ -228,10 +231,12 @@ export function populateCharacterSelector(characters, activeId) {
         for (const character of groupCharacters) {
             const option = document.createElement("option");
 
-            option.value = character.id;
+            const selectorId = character.selectorId || character.id;
+
+            option.value = selectorId;
             option.textContent = character.name;
 
-            if (character.id === activeId) {
+            if (selectorId === activeId) {
                 option.selected = true;
             }
 

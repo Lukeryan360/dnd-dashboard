@@ -1,5 +1,39 @@
 import { loadCharacters, loadReferences } from "./data.js";
 import { populateCharacterSelector, renderDashboard, showError } from "./ui.js";
+import {
+    characterJsonString,
+    getRawCharacter,
+    normalizeCharacter,
+    serializeRawCharacter,
+    validateRawCharacter
+} from "./character-utils.js";
+
+let activeCharacter = null;
+let importCounter = 0;
+
+function downloadJson(filename, jsonText) {
+    const blob = new Blob([jsonText], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+function showAddCharacterMenu(button, menu) {
+    const isOpen = menu.hidden === false;
+    menu.hidden = isOpen;
+    button.setAttribute("aria-expanded", String(!isOpen));
+}
+
+function hideAddCharacterMenu(button, menu) {
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+}
 
 async function init() {
 
@@ -46,6 +80,7 @@ async function init() {
             loadCharacters(),
             loadReferences()
         ]);
+        const dashboardCharacters = [...characters];
 
         if (!characters || characters.length === 0) {
             throw new Error("No character data found.");
@@ -53,9 +88,10 @@ async function init() {
 
         // Initial character
         const defaultCharacter = characters[0];
+        activeCharacter = defaultCharacter;
 
         // UI Controls
-        populateCharacterSelector(characters, defaultCharacter.id);
+        populateCharacterSelector(dashboardCharacters, defaultCharacter.id);
 
         // -- Render the dashboard
         renderDashboard(defaultCharacter, references);
@@ -63,10 +99,88 @@ async function init() {
         // Event Listeners
         document.getElementById("character-select").addEventListener("change", (event) => {
             const selectedId = event.target.value;
-            const selectedCharacter = characters.find(c => c.id === selectedId);
+            const selectedCharacter = dashboardCharacters.find(
+                character => (character.selectorId || character.id) === selectedId
+            );
 
             if (selectedCharacter) {
+                activeCharacter = selectedCharacter;
                 renderDashboard(selectedCharacter, references);
+            }
+        });
+
+        const addButton = document.getElementById("add-character-button");
+        const addMenu = document.getElementById("add-character-menu");
+        const importInput = document.getElementById("character-import-input");
+
+        addButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            showAddCharacterMenu(addButton, addMenu);
+        });
+
+        document.getElementById("create-character-action").addEventListener("click", () => {
+            window.location.href = "editor.html";
+        });
+
+        document.getElementById("import-character-action").addEventListener("click", () => {
+            importInput.click();
+            hideAddCharacterMenu(addButton, addMenu);
+        });
+
+        document.getElementById("export-current-character").addEventListener("click", () => {
+            if (!activeCharacter) {
+                showError("No character is currently selected for export.");
+                return;
+            }
+
+            const rawCharacter = getRawCharacter(activeCharacter);
+            const serializedCharacter = serializeRawCharacter(rawCharacter);
+            const filename = `${serializedCharacter.id || activeCharacter.id || "character"}.json`;
+
+            downloadJson(filename, characterJsonString(serializedCharacter));
+        });
+
+        importInput.addEventListener("change", async (event) => {
+            const file = event.target.files?.[0];
+            event.target.value = "";
+
+            if (!file) {
+                return;
+            }
+
+            try {
+                const text = await file.text();
+                const rawCharacter = JSON.parse(text);
+                const validationErrors = validateRawCharacter(rawCharacter);
+
+                if (validationErrors.length > 0) {
+                    showError(`Could not import ${file.name}: ${validationErrors.join(" ")}`);
+                    return;
+                }
+
+                const importedCharacter = normalizeCharacter(rawCharacter);
+                const selectorId = `imported-${++importCounter}-${importedCharacter.id || "character"}`;
+
+                Object.defineProperty(importedCharacter, "selectorId", {
+                    value: selectorId,
+                    enumerable: false
+                });
+
+                importedCharacter.group = importedCharacter.group || "Imported";
+                dashboardCharacters.push(importedCharacter);
+                activeCharacter = importedCharacter;
+
+                populateCharacterSelector(dashboardCharacters, selectorId);
+                renderDashboard(importedCharacter, references);
+            } catch (error) {
+                console.error("Could not import character JSON:", error);
+                showError(`Could not import ${file.name}. Please choose a valid character JSON file.`);
+            }
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!addMenu.contains(event.target) && !addButton.contains(event.target)) {
+                hideAddCharacterMenu(addButton, addMenu);
             }
         });
     } catch (error) {

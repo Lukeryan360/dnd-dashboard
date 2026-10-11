@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Character Editor</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="application-name" content="">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="error-banner" style="display: none; background-color: #8b1e2d; color: white; padding: 1rem; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 1000;">
+    <span id="error-message">An error occurred while loading the editor.</span>
+</div>
+
+<main id="app">
+
+    <section id="dashboard" class="editor-shell">
+
+        <header id="character-header">
+            <div id="character-identity">
+                <p class="eyebrow">Character Builder</p>
+                <h1 id="character-name">Character Editor</h1>
+                <p id="character-summary">Create or import, preview, and export dashboard-ready JSON.</p>
+            </div>
+
+            <div class="editor-actions">
+                <a class="secondary-button" id="back-to-dashboard" href="index.html">Dashboard</a>
+                <button class="primary-button" id="export-character" type="button">Export JSON</button>
+            </div>
+        </header>
+
+        <form id="character-editor" novalidate>
+
+            <section class="dashboard-section editor-section">
+                <h2>Identity</h2>
+
+                <div class="form-grid">
+                    <label class="field">
+                        <span>Name</span>
+                        <input id="field-name" name="name" type="text" required autocomplete="off">
+                    </label>
+
+                    <label class="field">
+                        <span>Group</span>
+                        <input id="field-group" name="group" type="text" autocomplete="off">
+                    </label>
+
+                    <label class="field short-field">
+                        <span>Level</span>
+                        <input id="field-level" name="level" type="number" min="1" max="20" step="1">
+                    </label>
+
+                    <label class="field color-field">
+                        <span>Theme Color</span>
+                        <input id="field-theme" name="theme" type="color">
+                    </label>
+                </div>
+            </section>
+
+            <section class="dashboard-section editor-section">
+                <h2>Character Basics</h2>
+
+                <div class="linked-field-list">
+                    <div class="entry-row scalar-entry-row">
+                        <label class="field">
+                            <span>Class</span>
+                            <input id="field-class" name="class" type="text" autocomplete="off">
+                        </label>
+
+                        <label class="field">
+                            <span>Custom URL</span>
+                            <input id="field-class-url" name="class-url" type="url" autocomplete="off" placeholder="Optional">
+                        </label>
+                    </div>
+
+                    <div class="entry-row scalar-entry-row">
+                        <label class="field">
+                            <span>Subclass</span>
+                            <input id="field-subclass" name="subclass" type="text" autocomplete="off">
+                        </label>
+
+                        <label class="field">
+                            <span>Custom URL</span>
+                            <input id="field-subclass-url" name="subclass-url" type="url" autocomplete="off" placeholder="Optional">
+                        </label>
+                    </div>
+
+                    <div class="entry-row scalar-entry-row">
+                        <label class="field">
+                            <span>Species</span>
+                            <input id="field-species" name="species" type="text" autocomplete="off">
+                        </label>
+
+                        <label class="field">
+                            <span>Custom URL</span>
+                            <input id="field-species-url" name="species-url" type="url" autocomplete="off" placeholder="Optional">
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section editor-section">
+                <div class="section-heading-row">
+                    <h2>Feats</h2>
+                    <button class="secondary-button" data-add-list-item="feats" type="button">Add Feat</button>
+                </div>
+                <div class="dynamic-list" id="feats-list"></div>
+            </section>
+
+            <section class="dashboard-section editor-section">
+                <h2>Spells</h2>
+                <div id="spell-levels" class="spell-editor-grid"></div>
+            </section>
+
+            <section class="dashboard-section editor-section">
+                <div class="section-heading-row">
+                    <h2>Magic Items</h2>
+                    <button class="secondary-button" data-add-list-item="magic_items" type="button">Add Item</button>
+                </div>
+                <div class="dynamic-list" id="magic-items-list"></div>
+            </section>
+
+            <details class="dashboard-section editor-section">
+                <summary>Advanced</summary>
+
+                <div class="form-grid advanced-grid">
+                    <label class="field">
+                        <span>Character ID</span>
+                        <input id="field-id" name="id" type="text" autocomplete="off">
+                    </label>
+                </div>
+            </details>
+
+            <details class="dashboard-section editor-section json-preview-section" open>
+                <summary>JSON Preview</summary>
+
+                <div id="editor-validation" class="validation-message" role="status"></div>
+
+                <pre id="json-preview" class="json-preview"></pre>
+            </details>
+
+        </form>
+
+        <footer id="dashboard-footer">
+            <span id="footer-version"></span>
+            <span>Created by Luke Ryan</span>
+            <span>
+                References:
+                <a href="http://dnd2024.wikidot.com/" target="dnd-reference">
+                    D&D 5e 2024 Wikidot
+                </a>
+            </span>
+        </footer>
+
+    </section>
+
+</main>
+
+<script type="module" src="js/editor.js"></script>
+
+</body>
+
+</html>
